@@ -1,0 +1,13 @@
+.TodoItem {
+  &.TodoItem--is-done {
+    .TodoItem__text {
+      text-decoration: line-through;
+    }    
+  }
+}
+
+.TodoItem__check {}
+
+.TodoItem__text {}
+
+.TodoItem__actions {}
