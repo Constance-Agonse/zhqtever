@@ -1,13 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
+import { FiPlus } from "react-icons/fi";
+import { TaskForm } from "../TaskForm";
 import { TodoItem } from "../TodoItem";
-import './Todo.scss';
+import { Task } from "./task";
+import "./Todo.scss";
 
-export const Todo = () => {
-  return <div className="Todo">
-    <TodoItem isDone={false} text="askdjbskdjfb" onDone={() =>{}}/>
-    <TodoItem isDone={true} text="askdjbsfdfdfkdjfb" onDone={() =>{}}/>
-    <TodoItem isDone={false} text="askdjbsfdffffffkdjfb" onDone={() =>{}}/>
-   
+type Props = {
+  tasks: Task[];
+  onAddNewTask: (text: string) => void;
+};
 
-  </div>;
+export const Todo = ({ tasks, onAddNewTask }: Props) => {
+  const [isAddNewTaskFormDisplayed, setIsAddNewTaskFormDisplayed] =
+    useState(false);
+
+  const handleAddTask = (text: string) => {
+    setIsAddNewTaskFormDisplayed(false);
+    onAddNewTask(text);
+  };
+
+  return (
+    <div className="Todo">
+      {tasks.map((task) => (
+        <TodoItem isDone={false} text={task.text} onDone={() => {}} />
+      ))}
+      {isAddNewTaskFormDisplayed ? (
+        <TaskForm
+          onClose={() => {
+            setIsAddNewTaskFormDisplayed(false);
+          }}
+          onSave={handleAddTask}
+        />
+      ) : (
+        <button
+          onClick={() => {
+            setIsAddNewTaskFormDisplayed(true);
+          }}
+        >
+          <FiPlus /> Add new task
+        </button>
+      )}
+    </div>
+  );
 };
