@@ -3,14 +3,33 @@ import { Todo } from "./Todo";
 import type { Task } from "./task";
 
 export const TodoContainer = () => {
-  const [tasks, setTask] = useState<Task[]>([]);
-
+  const [tasks, setTasks] = useState<Task[]>([]);
+  console.log(tasks);
   return (
     <Todo
       onAddNewTask={(text) => {
-        setTask([...tasks, { text }]);
+        setTasks([
+          ...tasks,
+          { text, isDone: false, id: Date.now().toString() },
+        ]);
+      }}
+      onTaskToggleDone={(id) => {
+        setTasks(
+          tasks.map((task) => {
+            if (task.id === id) {
+              return {
+                ...task,
+                isDone: !task.isDone,
+              };
+            }
+            return task;
+          })
+        );
       }}
       tasks={tasks}
+      onTaskDelete={(id) => {
+        setTasks(tasks.filter((task) => task.id !== id));
+      }}
     />
   );
 };

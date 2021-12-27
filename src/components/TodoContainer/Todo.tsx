@@ -8,9 +8,11 @@ import "./Todo.scss";
 type Props = {
   tasks: Task[];
   onAddNewTask: (text: string) => void;
+  onTaskToggleDone: (id: string) => void;
+  onTaskDelete: (id: string) => void;
 };
 
-export const Todo = ({ tasks, onAddNewTask }: Props) => {
+export const Todo = ({ tasks, onAddNewTask, onTaskToggleDone, onTaskDelete }: Props) => {
   const [isAddNewTaskFormDisplayed, setIsAddNewTaskFormDisplayed] =
     useState(false);
 
@@ -22,7 +24,14 @@ export const Todo = ({ tasks, onAddNewTask }: Props) => {
   return (
     <div className="Todo">
       {tasks.map((task) => (
-        <TodoItem isDone={false} text={task.text} onDone={() => {}} />
+        <TodoItem
+          onDelete={onTaskDelete}
+          key={task.text}
+          isDone={task.isDone}
+          text={task.text}
+          onToggleDone={onTaskToggleDone}
+          id={task.id}
+        />
       ))}
       {isAddNewTaskFormDisplayed ? (
         <TaskForm
