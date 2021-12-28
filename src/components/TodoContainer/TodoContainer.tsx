@@ -7,6 +7,19 @@ export const TodoContainer = () => {
   console.log(tasks);
   return (
     <Todo
+      onTaskEdit={(id, text) => {
+        setTasks(
+          tasks.map((task) => {
+            if (task.id === id) {
+              return {
+                ...task,
+                text,
+              };
+            }
+            return task;
+          })
+        );
+      }}
       onAddNewTask={(text) => {
         setTasks([
           ...tasks,

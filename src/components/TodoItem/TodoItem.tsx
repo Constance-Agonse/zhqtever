@@ -11,6 +11,7 @@ type Props = {
   isDone: boolean;
   id: string;
   onDelete: (id: string) => void;
+  onEdit: (id: string, text: string) => void;
 };
 
 export const TodoItem = ({
@@ -19,6 +20,7 @@ export const TodoItem = ({
   isDone,
   id,
   onDelete,
+  onEdit,
 }: Props) => {
   const [isFormDisplayed, setIsFormDisplayed] = useState(false);
 
@@ -26,8 +28,9 @@ export const TodoItem = ({
     <div className={classNames("TodoItem", { "TodoItem--is-done": isDone })}>
       {isFormDisplayed ? (
         <TaskForm
-          onSave={() => console.log("saved")}
-          onClose={() => setIsFormDisplayed(true)}
+          onSave={(text) => onEdit(id, text)}
+          onClose={() => setIsFormDisplayed(false)}
+          initialText={text}
         />
       ) : (
         <>

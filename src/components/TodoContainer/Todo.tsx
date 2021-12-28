@@ -10,9 +10,16 @@ type Props = {
   onAddNewTask: (text: string) => void;
   onTaskToggleDone: (id: string) => void;
   onTaskDelete: (id: string) => void;
+  onTaskEdit: (id: string, text: string) => void;
 };
 
-export const Todo = ({ tasks, onAddNewTask, onTaskToggleDone, onTaskDelete }: Props) => {
+export const Todo = ({
+  tasks,
+  onAddNewTask,
+  onTaskToggleDone,
+  onTaskDelete,
+  onTaskEdit,
+}: Props) => {
   const [isAddNewTaskFormDisplayed, setIsAddNewTaskFormDisplayed] =
     useState(false);
 
@@ -25,6 +32,7 @@ export const Todo = ({ tasks, onAddNewTask, onTaskToggleDone, onTaskDelete }: Pr
     <div className="Todo">
       {tasks.map((task) => (
         <TodoItem
+          onEdit={onTaskEdit}
           onDelete={onTaskDelete}
           key={task.text}
           isDone={task.isDone}

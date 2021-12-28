@@ -5,10 +5,11 @@ import "./TaskForm.scss";
 type Props = {
   onSave: (text: string) => void;
   onClose: () => void;
+  initialText?: string;
 };
 
-export const TaskForm = ({ onSave, onClose }: Props) => {
-  const [text, setText] = useState("");
+export const TaskForm = ({ onSave, onClose, initialText }: Props) => {
+  const [text, setText] = useState(initialText);
 
   return (
     <div className="TaskForm">
@@ -18,10 +19,18 @@ export const TaskForm = ({ onSave, onClose }: Props) => {
         onChange={(e) => {
           setText(e.target.value);
         }}
-      ></textarea>
+      />
       <div className="TaskForm__actions">
         <button onClick={onClose}>Cancel</button>
-        <button onClick={() => onSave(text)}>Save</button>
+        <button
+          onClick={() => {
+            if (text) {
+              onSave(text);
+            }
+          }}
+        >
+          Save
+        </button>
       </div>
     </div>
   );
