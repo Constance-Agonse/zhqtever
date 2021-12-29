@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Button } from "../Button";
 
 import "./TaskForm.scss";
 
@@ -21,16 +22,15 @@ export const TaskForm = ({ onSave, onClose, initialText }: Props) => {
         }}
       />
       <div className="TaskForm__actions">
-        <button onClick={onClose}>Cancel</button>
-        <button
+        <Button onClick={onClose} text="Cancel" variant="secondary" />
+        <Button
           onClick={() => {
             if (text) {
               onSave(text);
             }
           }}
-        >
-          Save
-        </button>
+          text="Save"
+        />
       </div>
     </div>
   );

@@ -24,49 +24,45 @@ export const TodoItem = ({
 }: Props) => {
   const [isFormDisplayed, setIsFormDisplayed] = useState(false);
 
-  return (
+  return isFormDisplayed ? (
+    <TaskForm
+      onSave={(text) => onEdit(id, text)}
+      onClose={() => setIsFormDisplayed(false)}
+      initialText={text}
+    />
+  ) : (
     <div className={classNames("TodoItem", { "TodoItem--is-done": isDone })}>
-      {isFormDisplayed ? (
-        <TaskForm
-          onSave={(text) => onEdit(id, text)}
-          onClose={() => setIsFormDisplayed(false)}
-          initialText={text}
-        />
-      ) : (
-        <>
-          <button
-            onClick={() => {
-              onToggleDone(id);
-            }}
-            className="TodoItem__check TodoItem__icon-button"
-          >
-            {isDone ? (
-              <FiMinus size={20} color="#3A98E2" />
-            ) : (
-              <FiCheck size={20} color="#3A98E2" />
-            )}
-          </button>
-          <div className="TodoItem__text">{text}</div>
-          <div className="TodoItem__actions">
-            <button
-              className="TodoItem__icon-button TodoItem__icon-button--action"
-              onClick={() => {
-                setIsFormDisplayed(true);
-              }}
-            >
-              <FiEdit color="#4E4E4E" size={16} />
-            </button>
-            <button
-              className="TodoItem__icon-button TodoItem__icon-button--action"
-              onClick={() => {
-                onDelete(id);
-              }}
-            >
-              <FiTrash2 color="#4E4E4E" size={16} />
-            </button>
-          </div>
-        </>
-      )}
+      <button
+        onClick={() => {
+          onToggleDone(id);
+        }}
+        className="TodoItem__check TodoItem__icon-button"
+      >
+        {isDone ? (
+          <FiMinus size={20} color="#3A98E2" />
+        ) : (
+          <FiCheck size={20} color="#3A98E2" />
+        )}
+      </button>
+      <div className="TodoItem__text">{text}</div>
+      <div className="TodoItem__actions">
+        <button
+          className="TodoItem__icon-button TodoItem__icon-button--action"
+          onClick={() => {
+            setIsFormDisplayed(true);
+          }}
+        >
+          <FiEdit color="#4E4E4E" size={16} />
+        </button>
+        <button
+          className="TodoItem__icon-button TodoItem__icon-button--action"
+          onClick={() => {
+            onDelete(id);
+          }}
+        >
+          <FiTrash2 color="#4E4E4E" size={16} />
+        </button>
+      </div>
     </div>
   );
 };

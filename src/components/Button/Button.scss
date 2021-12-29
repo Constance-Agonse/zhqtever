@@ -1,0 +1,15 @@
+.Button {
+  border: 1px solid #3A98E2;
+  border-radius: 2px;
+  text-transform: uppercase;
+  background-color: #fff;
+  min-width: 100px;
+  padding: 6px 0;
+  color: #4e4e4e;
+  text-align: center;
+  cursor: pointer;
+
+  &.Button--secondary {
+    border: 1px solid #F2B428;
+  }
+}
