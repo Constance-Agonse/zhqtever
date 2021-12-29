@@ -3,7 +3,9 @@ import { Todo } from "./Todo";
 import type { Task } from "./task";
 
 export const TodoContainer = () => {
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const [tasks, setTasks] = useState<Task[]>([
+    { text: "asdasd", isDone: true, id: "asdasdasd" },
+  ]);
   console.log(tasks);
   return (
     <Todo

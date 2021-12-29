@@ -10,9 +10,22 @@ function App() {
       <div className="App__content">
         <div className="App__content__tabs">
           <Tabs
+            currentTab={tab}
             tabItems={[
-              { name: "Tasks", onClick: () => { setTab('todo') } },
-              { name: "Stats", onClick: () => { setTab('stats') } },
+              {
+                name: "Tasks",
+                onClick: () => {
+                  setTab("todo");
+                },
+                key: "todo",
+              },
+              {
+                name: "Stats",
+                onClick: () => {
+                  setTab("stats");
+                },
+                key: "stats",
+              },
             ]}
           />
         </div>
