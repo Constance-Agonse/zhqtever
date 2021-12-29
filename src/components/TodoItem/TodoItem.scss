@@ -38,7 +38,10 @@
   margin-right: 8px;
 }
 
-.TodoItem__text {}
+.TodoItem__text {
+  font-weight: 300;
+  line-height: 22px;
+}
 
 .TodoItem__actions {
   margin-left: auto;
