@@ -1,16 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import { Todo } from "./Todo";
 import type { Task } from "./task";
 
-export const TodoContainer = () => {
-  const [tasks, setTasks] = useState<Task[]>([
-    { text: "asdasd", isDone: true, id: "asdasdasd" },
-  ]);
-  console.log(tasks);
+type Props = {
+  tasks: Task[];
+  onSetTask: (task: Task[]) => void;
+};
+
+export const TodoContainer = ({ tasks, onSetTask }: Props) => {
   return (
     <Todo
       onTaskEdit={(id, text) => {
-        setTasks(
+        onSetTask(
           tasks.map((task) => {
             if (task.id === id) {
               return {
@@ -23,13 +24,13 @@ export const TodoContainer = () => {
         );
       }}
       onAddNewTask={(text) => {
-        setTasks([
+        onSetTask([
           ...tasks,
           { text, isDone: false, id: Date.now().toString() },
         ]);
       }}
       onTaskToggleDone={(id) => {
-        setTasks(
+        onSetTask(
           tasks.map((task) => {
             if (task.id === id) {
               return {
@@ -43,7 +44,7 @@ export const TodoContainer = () => {
       }}
       tasks={tasks}
       onTaskDelete={(id) => {
-        setTasks(tasks.filter((task) => task.id !== id));
+        onSetTask(tasks.filter((task) => task.id !== id));
       }}
     />
   );

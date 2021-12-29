@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { Tabs } from "./components/Tabs";
-import { TodoContainer } from "./components/TodoContainer";
+import { Task, TodoContainer } from "./components/TodoContainer";
 
 function App() {
   const [tab, setTab] = useState<"todo" | "stats">("todo");
+  const [tasks, setTasks] = useState<Task[]>([
+    { text: "asdasd", isDone: true, id: "asdasdasd" },
+  ]);
 
   return (
     <div className="App">
@@ -29,7 +32,7 @@ function App() {
             ]}
           />
         </div>
-        {tab === "todo" && <TodoContainer />}
+        {tab === "todo" && <TodoContainer tasks={tasks} onSetTask={setTasks} />}
         {tab === "stats" && <div>Stats will be here</div>}
       </div>
     </div>
