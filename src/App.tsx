@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Stats } from "./components/StatsContainer";
 import { Tabs } from "./components/Tabs";
 import { Task, TodoContainer } from "./components/TodoContainer";
 
@@ -33,10 +34,29 @@ function App() {
           />
         </div>
         {tab === "todo" && <TodoContainer tasks={tasks} onSetTask={setTasks} />}
-        {tab === "stats" && <div>Stats will be here</div>}
+        {tab === "stats" && (
+          <Stats
+            doneTasksAmount={getDoneTasksAmount(tasks)}
+            undoneTasksAmount={getUndoneTasksAmount(tasks)}
+          />
+        )}
       </div>
     </div>
   );
 }
+
+const getDoneTasksAmount = (tasks: Task[]) => {
+  let count = 0;
+  tasks.forEach((task) => {
+    if (task.isDone) {
+      count++;
+    }
+  });
+  return count;
+};
+
+const getUndoneTasksAmount = (tasks: Task[]) => {
+  return tasks.length - getDoneTasksAmount(tasks);
+};
 
 export default App;
