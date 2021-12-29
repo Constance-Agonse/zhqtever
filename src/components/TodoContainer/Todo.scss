@@ -1,2 +1,13 @@
-.Todo {
+.Todo__add-item {
+  border: none;
+  background: none;
+  outline: none;
+  padding: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: #4e4e4e;
+  >span {
+    margin-left: 8px;
+  }
 }

@@ -53,8 +53,10 @@ export const Todo = ({
           onClick={() => {
             setIsAddNewTaskFormDisplayed(true);
           }}
+          className="Todo__add-item"
         >
-          <FiPlus /> Add new task
+          <FiPlus size={20} color="#3A98E2" />
+          <span>Add new task</span>
         </button>
       )}
     </div>

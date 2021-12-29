@@ -12,7 +12,7 @@
   text-transform: uppercase;
   cursor: pointer;
   &.Tabs__item--is-active {
-    font-weight: bold;
+    font-weight: 500;
     cursor: default;
   }
 }
