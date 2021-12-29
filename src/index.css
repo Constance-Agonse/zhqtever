@@ -1,19 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap');
 @import-normalize;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap");
 
 body {
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
+  color: #4e4e4e;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-div { 
+div {
   box-sizing: border-box;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
