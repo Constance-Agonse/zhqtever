@@ -37,7 +37,7 @@ export const Stats = ({ doneTasksAmount, undoneTasksAmount }: Props) => {
     const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
     const x = cx + radius * Math.cos(-midAngle * RADIAN);
     const y = cy + radius * Math.sin(-midAngle * RADIAN);
-
+    const text = index === 0 ? 'Done' : 'Undone'
     return (
       <text
         x={x}
@@ -46,7 +46,7 @@ export const Stats = ({ doneTasksAmount, undoneTasksAmount }: Props) => {
         textAnchor={x > cx ? "start" : "end"}
         dominantBaseline="central"
       >
-        {`${(percent * 100).toFixed(0)}%`}
+        {`${text} ${(percent * 100).toFixed(0)}%`}
       </text>
     );
   };
@@ -63,7 +63,7 @@ export const Stats = ({ doneTasksAmount, undoneTasksAmount }: Props) => {
           cy="50%"
           labelLine={false}
           label={renderCustomizedLabel}
-          outerRadius={80}
+          outerRadius={200}
           fill="#8884d8"
           dataKey="value"
         >

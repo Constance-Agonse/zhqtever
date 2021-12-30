@@ -6,7 +6,7 @@ import { Task, TodoContainer } from "./components/TodoContainer";
 function App() {
   const [tab, setTab] = useState<"todo" | "stats">("todo");
   const [tasks, setTasks] = useState<Task[]>([
-    { text: "asdasd", isDone: true, id: "asdasdasd" },
+    { text: "example task", isDone: false, id: "1234" },
   ]);
 
   return (
